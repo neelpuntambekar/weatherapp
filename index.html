@@ -18,15 +18,19 @@
 
    <div id="background">
 
+    <div id="container">
 
+      <h1>what is the weather today</h1>
 
-    <h1>what is the weather today</h1>
+      <h2 id="iptext" ></h2>
+  
+      <h2 id="locationtext" ></h2>
+  
+      <h2 id="weathertext" ></h2>
+  
 
-    <h2 id="iptext" ></h2>
+    </div>
 
-    <h2 id="locationtext" ></h2>
-
-    <h2 id="weathertext" ></h2>
 
     
 
@@ -40,9 +44,15 @@
          
      }
 
-       div {
+       #background {
        background-image: url("weather.jpg");
        height: 100vh;
+     }
+
+     #container {
+
+      display: grid;
+
      }
 
    </style>
@@ -81,7 +91,7 @@
 
          const { main, name, sys, weather } = data2;
 
-         weathertext.innerHTML = "your weather is "+ data2.main.temp;
+         weathertext.innerHTML = "the temprature at " +data1.city.name +" " + data2.main.temp;
 
         }
 
