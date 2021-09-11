@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>weatherapp</title>
+</head>
+
+<body>
+
+    <h1>what is the weather today</h1>
+
+      <h2 id="iptext" ></h2>
+
+      <h2 id="locationtext" ></h2>
+   <style>
+
+     h1 {
+         text-align: center;
+     }
+
+   </style>
+
+      <script>
+
+      
+         async function getapi() {
+
+            var iptext = document.getElementById("iptext");
+         
+             var locationtext = document.getElementById("locationtext");
+         
+             var data;
+
+           const response  =  await  fetch('https://api.ipify.org/?format=json');
+            data  =  await response.json();
+
+           
+
+          iptext.innerHTML = "your ip is " + data.ip;
+
+          const response1  =  await  fetch(`https://api.geoapify.com/v1/ipinfo?&ip=${data.ip}&apiKey=ff10f6aae52b49e695eb6d9e96856109`);
+         const data1  =  await response1.json();
+         
+
+         locationtext.innerHTML = "your location is " + data1.city.name;
+        }
+
+           getapi();       
+         
+
+ 
+
+      </script>
+
+</body>
+
+</html>
