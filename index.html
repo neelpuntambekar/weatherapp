@@ -21,7 +21,9 @@
       <h2 id="iptext" ></h2>
 
       <h2 id="locationtext" ></h2>
-   <style>
+
+      <h2 id="weathertext" ></h2>
+<style>
 
      h1 {
          text-align: center;
@@ -31,13 +33,17 @@
 
       <script>
 
-      
+     
+
          async function getapi() {
 
             var iptext = document.getElementById("iptext");
          
              var locationtext = document.getElementById("locationtext");
          
+             var weathertext = document.getElementById("weathertext");
+         
+           
              var data;
 
            const response  =  await  fetch('https://api.ipify.org/?format=json');
@@ -52,6 +58,15 @@
          
 
          locationtext.innerHTML = "your location is " + data1.city.name;
+
+         
+         const response2  =  await  fetch(  `https://api.openweathermap.org/data/2.5/weather?q=${data1.city.name}&appid=b7611bc08cdfae5ad7f4cec88cd0ec23&units=metric`);
+         const data2  =  await response2.json();
+
+         const { main, name, sys, weather } = data2;
+
+         weathertext.innerHTML = "your weather is "+ data2.main.temp;
+
         }
 
            getapi();       
